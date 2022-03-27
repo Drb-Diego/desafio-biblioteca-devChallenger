@@ -1,9 +1,7 @@
-import express, { Express } from 'express';
+import express from 'express';
 
-export default (): Express => {
-  const app = express();
+const app = express();
 
-  app.use(express.json());
+app.use(express.json());
 
-  return app;
-};
+export default app;
