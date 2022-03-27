@@ -18,5 +18,9 @@ module.exports = {
     'no-console': 'off',
     'import/extensions': 'off',
     'import/no-unresolved': 'off',
+    'class-methods-use-this': 'off',
+    'import/prefer-default-export': 'off',
+    'object-curly-newline': 'off',
+    'lines-between-class-members': 'off',
   },
 };
