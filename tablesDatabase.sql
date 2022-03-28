@@ -1,0 +1,31 @@
+CREATE DATABASE IF NOT EXISTS library_challenger;
+
+USE library_challenger;
+
+CREATE TABLE IF NOT EXISTS author (
+  id VARCHAR(36) PRIMARY KEY,
+  `name` VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS publisher(
+	id VARCHAR(36) PRIMARY KEY,
+  `name` VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE IF NOT EXISTS book(
+	id VARCHAR(36) PRIMARY KEY,
+  title VARCHAR(100) NOT NULL UNIQUE,
+  image VARCHAR(255) NOT NULL,
+  publisherId VARCHAR(36) NOT NULL,
+  FOREIGN KEY (publisherId) REFERENCES publisher(id)
+);
+
+CREATE TABLE IF NOT EXISTS book_author(
+	authorId VARCHAR(36) NOT NULL,
+  bookId VARCHAR(36) NOT NULL,
+  PRIMARY KEY(authorId, bookId),
+  FOREIGN KEY (authorId) REFERENCES author(id),
+  FOREIGN KEY (bookId) REFERENCES book(id)
+);
+
+

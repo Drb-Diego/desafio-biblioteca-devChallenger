@@ -10,9 +10,13 @@ export default class AuthorModel {
 
   async create(authors: string[]) {
     const sqlCreateAuthor = 'INSERT author(id, name) VALUES (?, ?)';
+    const idsAuthors: string[] = [];
 
-    await authors.forEach((author) => {
-      this.connection.execute(sqlCreateAuthor, [v4(), author]);
+    await authors.forEach((author, index) => {
+      idsAuthors.push(v4());
+      this.connection.execute(sqlCreateAuthor, [idsAuthors[index], author]);
     });
+
+    return idsAuthors;
   }
 }
